@@ -1,0 +1,93 @@
+﻿@model IEnumerable<InventoryMgmtSys.Models.Ashwani_Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ord_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ordname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.orddate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.duedate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.manufacturer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ashwani.fname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ashwani_Customer.Fname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ashwani_Items.id_item)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ord_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ordname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.orddate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.duedate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.manufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ashwani.fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ashwani_Customer.Fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ashwani_Items.id_item)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="C3IT_DOTNET_TESTModel3.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Ashwani_Category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cat_name" Type="varchar" MaxLength="25" />
+    <Property Name="cat_comment" Type="text" />
+    <Property Name="cat_date" Type="date" />
+  </EntityType>
+  <EntityType Name="Ashwani_Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cus_id" Type="int" />
+    <Property Name="Fname" Type="varchar" MaxLength="25" />
+    <Property Name="Lname" Type="varchar" MaxLength="25" />
+    <Property Name="Gender" Type="varchar" MaxLength="7" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Tel" Type="varchar" MaxLength="25" />
+    <Property Name="Address" Type="varchar" MaxLength="30" />
+    <Property Name="Cdate" Type="date" />
+  </EntityType>
+  <EntityType Name="Ashwani_Items">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="id_item" Type="varchar" MaxLength="25" />
+    <Property Name="itname" Type="varchar" MaxLength="25" />
+    <Property Name="qty" Type="int" />
+    <Property Name="sold_qty" Type="float" />
+    <Property Name="cost" Type="float" />
+    <Property Name="itdate" Type="date" />
+    <Property Name="manufacturer" Type="varchar" MaxLength="25" />
+    <Property Name="sales_per" Type="varchar" MaxLength="50" />
+    <Property Name="address" Type="varchar" MaxLength="50" />
+    <Property Name="telephone" Type="varchar" MaxLength="50" />
+    <Property Name="itsale" Type="float" />
+    <Property Name="cat_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Ashwani_Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ord_id" Type="varchar" MaxLength="25" />
+    <Property Name="ordname" Type="varchar" MaxLength="25" />
+    <Property Name="qty" Type="int" />
+    <Property Name="orddate" Type="date" />
+    <Property Name="duedate" Type="date" />
+    <Property Name="manufacturer" Type="varchar" MaxLength="25" />
+    <Property Name="sales_per" Type="varchar" MaxLength="50" />
+    <Property Name="customer" Type="int" />
+    <Property Name="status" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK_Ashwani_Order_ToTable">
+    <End Role="Ashwani_Customer" Type="Self.Ashwani_Customer" Multiplicity="0..1" />
+    <End Role="Ashwani_Order" Type="Self.Ashwani_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ashwani_Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ashwani_Order">
+        <PropertyRef Name="customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITEMS_CATEGORY">
+    <End Role="Ashwani_Category" Type="Self.Ashwani_Category" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Ashwani_Items" Type="Self.Ashwani_Items" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ashwani_Category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ashwani_Items">
+        <PropertyRef Name="cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="C3IT_DOTNET_TESTModel3StoreContainer">
+    <EntitySet Name="Ashwani_Category" EntityType="Self.Ashwani_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ashwani_Customer" EntityType="Self.Ashwani_Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ashwani_Items" EntityType="Self.Ashwani_Items" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ashwani_Order" EntityType="Self.Ashwani_Order" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Ashwani_Order_ToTable" Association="Self.FK_Ashwani_Order_ToTable">
+      <End Role="Ashwani_Customer" EntitySet="Ashwani_Customer" />
+      <End Role="Ashwani_Order" EntitySet="Ashwani_Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITEMS_CATEGORY" Association="Self.FK_ITEMS_CATEGORY">
+      <End Role="Ashwani_Category" EntitySet="Ashwani_Category" />
+      <End Role="Ashwani_Items" EntitySet="Ashwani_Items" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,57 @@
+﻿
+
+@model IEnumerable<InventoryMgmtSys.Models.Ashwani_EMployee>
+@{
+    ViewBag.Title = "Report";
+}
+
+<h2>Employee Report</h2>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpSalary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpSalary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth.ToString().Split(' ')[0])
+            </td>
+        </tr>
+    }
+</table>

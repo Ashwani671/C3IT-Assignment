@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="C3IT_DOTNET_TESTModelStoreContainer" CdmEntityContainer="C3IT_DOTNET_TESTEntities13">
+    <EntitySetMapping Name="Ashwanis">
+      <EntityTypeMapping TypeName="C3IT_DOTNET_TESTModel.Ashwani">
+        <MappingFragment StoreEntitySet="Ashwani">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="attname" ColumnName="attname" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="user_level" ColumnName="user_level" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="udate" ColumnName="udate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ashwani_Category">
+      <EntityTypeMapping TypeName="C3IT_DOTNET_TESTModel.Ashwani_Category">
+        <MappingFragment StoreEntitySet="Ashwani_Category">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cat_name" ColumnName="cat_name" />
+          <ScalarProperty Name="cat_comment" ColumnName="cat_comment" />
+          <ScalarProperty Name="cat_date" ColumnName="cat_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ashwani_Customer">
+      <EntityTypeMapping TypeName="C3IT_DOTNET_TESTModel.Ashwani_Customer">
+        <MappingFragment StoreEntitySet="Ashwani_Customer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Cus_id" ColumnName="Cus_id" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Cdate" ColumnName="Cdate" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ashwani_Items">
+      <EntityTypeMapping TypeName="C3IT_DOTNET_TESTModel.Ashwani_Items">
+        <MappingFragment StoreEntitySet="Ashwani_Items">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id_item" ColumnName="id_item" />
+          <ScalarProperty Name="itname" ColumnName="itname" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="sold_qty" ColumnName="sold_qty" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="itdate" ColumnName="itdate" />
+          <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+          <ScalarProperty Name="sales_per" ColumnName="sales_per" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="itsale" ColumnName="itsale" />
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ashwani_Order">
+      <EntityTypeMapping TypeName="C3IT_DOTNET_TESTModel.Ashwani_Order">
+        <MappingFragment StoreEntitySet="Ashwani_Order">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ord_id" ColumnName="ord_id" />
+          <ScalarProperty Name="ordname" ColumnName="ordname" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="orddate" ColumnName="orddate" />
+          <ScalarProperty Name="duedate" ColumnName="duedate" />
+          <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+          <ScalarProperty Name="sales_per" ColumnName="sales_per" />
+          <ScalarProperty Name="customer" ColumnName="customer" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="itemid" ColumnName="itemid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ashwani_EMployee">
+      <EntityTypeMapping TypeName="C3IT_DOTNET_TESTModel.Ashwani_EMployee">
+        <MappingFragment StoreEntitySet="Ashwani_EMployee">
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="EmpSalary" ColumnName="EmpSalary" />
+          <ScalarProperty Name="EmpAge" ColumnName="EmpAge" />
+          <ScalarProperty Name="EmpAddress" ColumnName="EmpAddress" />
+          <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

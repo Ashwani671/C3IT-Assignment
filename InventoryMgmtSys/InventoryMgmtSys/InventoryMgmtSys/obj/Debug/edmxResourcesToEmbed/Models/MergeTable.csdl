@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="C3IT_DOTNET_TESTModel3" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Ashwani_Category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cat_name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="cat_comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="cat_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Ashwani_Items" Relationship="Self.FK_ITEMS_CATEGORY" FromRole="Ashwani_Category" ToRole="Ashwani_Items" />
+  </EntityType>
+  <EntityType Name="Ashwani_Items">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="id_item" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="itname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="sold_qty" Type="Double" />
+    <Property Name="cost" Type="Double" />
+    <Property Name="itdate" Type="DateTime" Precision="0" />
+    <Property Name="manufacturer" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="sales_per" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="itsale" Type="Double" />
+    <Property Name="cat_id" Type="Int32" />
+    <NavigationProperty Name="Ashwani_Category" Relationship="Self.FK_ITEMS_CATEGORY" FromRole="Ashwani_Items" ToRole="Ashwani_Category" />
+  </EntityType>
+  <Association Name="FK_ITEMS_CATEGORY">
+    <End Role="Ashwani_Category" Type="Self.Ashwani_Category" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Ashwani_Items" Type="Self.Ashwani_Items" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ashwani_Category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ashwani_Items">
+        <PropertyRef Name="cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="C3IT_DOTNET_TESTEntities9" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Ashwani_Category" EntityType="Self.Ashwani_Category" />
+    <EntitySet Name="Ashwani_Items" EntityType="Self.Ashwani_Items" />
+    <AssociationSet Name="FK_ITEMS_CATEGORY" Association="Self.FK_ITEMS_CATEGORY">
+      <End Role="Ashwani_Category" EntitySet="Ashwani_Category" />
+      <End Role="Ashwani_Items" EntitySet="Ashwani_Items" />
+    </AssociationSet>
+    <EntitySet Name="Ashwani_Customer" EntityType="C3IT_DOTNET_TESTModel3.Ashwani_Customer" />
+    <EntitySet Name="Ashwani_Order" EntityType="C3IT_DOTNET_TESTModel3.Ashwani_Order" />
+    <AssociationSet Name="FK_Ashwani_Order_ToTable" Association="C3IT_DOTNET_TESTModel3.FK_Ashwani_Order_ToTable">
+      <End Role="Ashwani_Customer" EntitySet="Ashwani_Customer" />
+      <End Role="Ashwani_Order" EntitySet="Ashwani_Order" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Ashwani_Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cus_id" Type="Int32" />
+    <Property Name="Fname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Lname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tel" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Cdate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Ashwani_Order" Relationship="C3IT_DOTNET_TESTModel3.FK_Ashwani_Order_ToTable" FromRole="Ashwani_Customer" ToRole="Ashwani_Order" />
+  </EntityType>
+  <EntityType Name="Ashwani_Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ord_id" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ordname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="orddate" Type="DateTime" Precision="0" />
+    <Property Name="duedate" Type="DateTime" Precision="0" />
+    <Property Name="manufacturer" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="sales_per" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="customer" Type="Int32" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Ashwani_Customer" Relationship="C3IT_DOTNET_TESTModel3.FK_Ashwani_Order_ToTable" FromRole="Ashwani_Order" ToRole="Ashwani_Customer" />
+  </EntityType>
+  <Association Name="FK_Ashwani_Order_ToTable">
+    <End Type="C3IT_DOTNET_TESTModel3.Ashwani_Customer" Role="Ashwani_Customer" Multiplicity="0..1" />
+    <End Type="C3IT_DOTNET_TESTModel3.Ashwani_Order" Role="Ashwani_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ashwani_Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ashwani_Order">
+        <PropertyRef Name="customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

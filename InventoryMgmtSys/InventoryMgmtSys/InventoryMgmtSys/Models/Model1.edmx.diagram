@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e26075773c924717921ba51d34b97d4c" Name="Diagram1">
+        <EntityTypeShape EntityType="C3IT_DOTNET_TESTModel.Ashwani" Width="1.5" PointX="7" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="C3IT_DOTNET_TESTModel.Ashwani_Category" Width="1.5" PointX="1" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="C3IT_DOTNET_TESTModel.Ashwani_Customer" Width="1.5" PointX="3.625" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="C3IT_DOTNET_TESTModel.Ashwani_Items" Width="1.5" PointX="3.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="C3IT_DOTNET_TESTModel.Ashwani_Order" Width="1.5" PointX="5.5" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="C3IT_DOTNET_TESTModel.FK_Ashwani_Order_ToTable_2" ManuallyRouted="false" />
+        <AssociationConnector Association="C3IT_DOTNET_TESTModel.FK_ITEMS_CATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="C3IT_DOTNET_TESTModel.FK_Ashwani_Order_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="C3IT_DOTNET_TESTModel.FK_Ashwani_Order_ToTable_1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="C3IT_DOTNET_TESTModel.Ashwani_EMployee" Width="1.5" PointX="0.75" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

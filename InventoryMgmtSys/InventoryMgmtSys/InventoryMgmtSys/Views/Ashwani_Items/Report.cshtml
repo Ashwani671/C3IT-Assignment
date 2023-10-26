@@ -1,0 +1,100 @@
+﻿@model IEnumerable<InventoryMgmtSys.Models.Ashwani_Items>
+
+@{
+    ViewBag.Title = "Report";
+    var totalSold = 0;
+    var totalCost = 0;
+}
+
+<h2>Report</h2>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+
+<table class="table table-success table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_item)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.itname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sold_qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sales_per)
+        </th>
+        <th>
+            <label class="labelclass">Total Cost</label>
+        </th>
+        <th>
+            <label class="labelclass">Total Sold</label>
+        </th>
+        <th>
+            <label class="labelclass">Remaining Quantity</label>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_item)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.itname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sold_qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sales_per)
+            </td>
+            <td>
+                @(item.sold_qty * item.cost)
+                @{
+                    totalCost += (int)(item.sold_qty * item.cost);
+                }
+            </td>
+            <td>
+                @{
+                    double salesPerValue = double.Parse(item.sales_per);
+                    double totalSalesForItem = (double)item.sold_qty * salesPerValue;
+                    @totalSalesForItem
+                    totalSold += (int)totalSalesForItem;
+                }
+            </td>
+            <td>
+                @(item.qty - item.sold_qty)
+            </td>
+        </tr>
+    }
+</table>
+
+<strong>Total Cost = </strong>@totalCost
+<br />
+<strong>Total Sold = </strong>@totalSold
+
+@{
+    var profit = totalSold - totalCost;
+    var profitPercentage = totalCost != 0 ? (double)profit / totalCost * 100 : 0;
+}
+
+<div><strong>Total Profit:</strong> @profit</div>
+<div><strong>Profit Percentage:</strong> @profitPercentage.ToString("0.00")%</div>

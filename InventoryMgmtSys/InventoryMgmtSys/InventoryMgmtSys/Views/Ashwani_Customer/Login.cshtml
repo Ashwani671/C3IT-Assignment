@@ -1,0 +1,71 @@
+﻿
+
+
+@model InventoryMgmtSys.Models.Ashwani
+@{
+    ViewBag.Title = "Login";
+}
+
+<!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+    <style>
+        .rounded-t-5 {
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+    </style>
+    <div class="card mb-3">
+        <div class="row g-0 d-flex align-items-center">
+            <div class="col-lg-4 d-none d-lg-flex">
+                <img src="https://isse.org.in/wp-content/uploads/2021/04/login-side.jpg"
+                     class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" height="400" width="500" />
+            </div>
+            <div class="col-lg-8">
+                <div class="card-body py-5 px-md-5">
+
+                    @using (Html.BeginForm("Login", "Ashwani_Customer"))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <!-- Email input -->
+                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log In into your account</h5>
+                        <div class="form-outline mb-4">
+                            <label for="email">email</label>
+                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                            <label for="password">password</label>
+                            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", type = "password" } })
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col d-flex justify-content-center">
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                                    <label class="form-check-label" for="form2Example31"> Remember me </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" value="Login" class="btn btn-primary btn-block mb-4">Login</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section: Design Block -->
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

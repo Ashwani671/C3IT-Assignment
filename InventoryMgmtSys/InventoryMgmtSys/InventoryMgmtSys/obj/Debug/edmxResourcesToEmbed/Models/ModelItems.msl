@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="C3IT_DOTNET_TESTModel2StoreContainer" CdmEntityContainer="C3IT_DOTNET_TESTEntities6">
+    <EntitySetMapping Name="Ashwani_Items">
+      <EntityTypeMapping TypeName="C3IT_DOTNET_TESTModel2.Ashwani_Items">
+        <MappingFragment StoreEntitySet="Ashwani_Items">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id_item" ColumnName="id_item" />
+          <ScalarProperty Name="itname" ColumnName="itname" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="sold_qty" ColumnName="sold_qty" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="itdate" ColumnName="itdate" />
+          <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+          <ScalarProperty Name="sales_per" ColumnName="sales_per" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="itsale" ColumnName="itsale" />
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

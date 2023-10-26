@@ -1,0 +1,98 @@
+﻿@model InventoryMgmtSys.Models.Ashwani_Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ashwani_Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ord_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ord_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ordname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ordname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.orddate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.orddate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.duedate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.duedate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.manufacturer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.manufacturer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ashwani.fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ashwani.fname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ashwani_Customer.Fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ashwani_Customer.Fname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ashwani_Items.id_item)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ashwani_Items.id_item)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

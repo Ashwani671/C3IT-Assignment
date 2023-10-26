@@ -1,0 +1,58 @@
+﻿@model InventoryMgmtSys.Models.Ashwani_EMployee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ashwani_EMployee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpSalary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpSalary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

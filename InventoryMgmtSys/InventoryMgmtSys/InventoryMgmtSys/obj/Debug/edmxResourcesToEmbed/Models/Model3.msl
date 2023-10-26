@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="C3IT_DOTNET_TESTModel2StoreContainer" CdmEntityContainer="C3IT_DOTNET_TESTEntities3">
+    <EntitySetMapping Name="Ashwani_Category">
+      <EntityTypeMapping TypeName="C3IT_DOTNET_TESTModel2.Ashwani_Category">
+        <MappingFragment StoreEntitySet="Ashwani_Category">
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="cat_name" ColumnName="cat_name" />
+          <ScalarProperty Name="cat_comment" ColumnName="cat_comment" />
+          <ScalarProperty Name="cat_date" ColumnName="cat_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

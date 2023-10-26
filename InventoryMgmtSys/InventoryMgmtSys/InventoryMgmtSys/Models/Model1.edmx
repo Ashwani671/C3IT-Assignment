@@ -1,0 +1,461 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="C3IT_DOTNET_TESTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ashwani">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fname" Type="varchar" MaxLength="25" />
+          <Property Name="lname" Type="varchar" MaxLength="25" />
+          <Property Name="attname" Type="varchar" MaxLength="25" />
+          <Property Name="dob" Type="date" />
+          <Property Name="gender" Type="varchar" MaxLength="7" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="tel" Type="varchar" MaxLength="25" />
+          <Property Name="address" Type="varchar" MaxLength="30" />
+          <Property Name="user_level" Type="varchar" MaxLength="25" />
+          <Property Name="password" Type="varchar" MaxLength="25" />
+          <Property Name="udate" Type="date" />
+        </EntityType>
+        <EntityType Name="Ashwani_Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cat_name" Type="varchar" MaxLength="25" />
+          <Property Name="cat_comment" Type="text" />
+          <Property Name="cat_date" Type="date" />
+        </EntityType>
+        <EntityType Name="Ashwani_Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cus_id" Type="int" />
+          <Property Name="Fname" Type="varchar" MaxLength="25" />
+          <Property Name="Lname" Type="varchar" MaxLength="25" />
+          <Property Name="Gender" Type="varchar" MaxLength="7" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Tel" Type="varchar" MaxLength="25" />
+          <Property Name="Address" Type="varchar" MaxLength="30" />
+          <Property Name="Cdate" Type="date" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Ashwani_EMployee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpName" Type="varchar" MaxLength="50" />
+          <Property Name="EmpAddress" Type="varchar" MaxLength="50" />
+          <Property Name="EmpAge" Type="int" />
+          <Property Name="EmpSalary" Type="float" />
+          <Property Name="DateOfBirth" Type="date" />
+        </EntityType>
+        <EntityType Name="Ashwani_Items">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="id_item" Type="varchar" MaxLength="25" />
+          <Property Name="itname" Type="varchar" MaxLength="25" />
+          <Property Name="qty" Type="int" />
+          <Property Name="sold_qty" Type="float" />
+          <Property Name="cost" Type="float" />
+          <Property Name="itdate" Type="date" />
+          <Property Name="manufacturer" Type="varchar" MaxLength="25" />
+          <Property Name="sales_per" Type="varchar" MaxLength="50" />
+          <Property Name="address" Type="varchar" MaxLength="50" />
+          <Property Name="telephone" Type="varchar" MaxLength="50" />
+          <Property Name="itsale" Type="float" />
+          <Property Name="cat_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Ashwani_Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ord_id" Type="varchar" MaxLength="25" />
+          <Property Name="ordname" Type="varchar" MaxLength="25" />
+          <Property Name="qty" Type="int" />
+          <Property Name="orddate" Type="date" />
+          <Property Name="duedate" Type="date" />
+          <Property Name="manufacturer" Type="varchar" MaxLength="25" />
+          <Property Name="sales_per" Type="int" />
+          <Property Name="customer" Type="int" />
+          <Property Name="status" Type="varchar" MaxLength="20" />
+          <Property Name="itemid" Type="int" />
+        </EntityType>
+        <Association Name="FK_Ashwani_Order_ToTable">
+          <End Role="Ashwani_Customer" Type="Self.Ashwani_Customer" Multiplicity="0..1" />
+          <End Role="Ashwani_Order" Type="Self.Ashwani_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ashwani_Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ashwani_Order">
+              <PropertyRef Name="customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ashwani_Order_ToTable_1">
+          <End Role="Ashwani_Items" Type="Self.Ashwani_Items" Multiplicity="0..1" />
+          <End Role="Ashwani_Order" Type="Self.Ashwani_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ashwani_Items">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ashwani_Order">
+              <PropertyRef Name="itemid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ashwani_Order_ToTable_2">
+          <End Role="Ashwani" Type="Self.Ashwani" Multiplicity="0..1" />
+          <End Role="Ashwani_Order" Type="Self.Ashwani_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ashwani">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ashwani_Order">
+              <PropertyRef Name="sales_per" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEMS_CATEGORY">
+          <End Role="Ashwani_Category" Type="Self.Ashwani_Category" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ashwani_Items" Type="Self.Ashwani_Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ashwani_Category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ashwani_Items">
+              <PropertyRef Name="cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="C3IT_DOTNET_TESTModelStoreContainer">
+          <EntitySet Name="Ashwani" EntityType="Self.Ashwani" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ashwani_Category" EntityType="Self.Ashwani_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ashwani_Customer" EntityType="Self.Ashwani_Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ashwani_EMployee" EntityType="Self.Ashwani_EMployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ashwani_Items" EntityType="Self.Ashwani_Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ashwani_Order" EntityType="Self.Ashwani_Order" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Ashwani_Order_ToTable" Association="Self.FK_Ashwani_Order_ToTable">
+            <End Role="Ashwani_Customer" EntitySet="Ashwani_Customer" />
+            <End Role="Ashwani_Order" EntitySet="Ashwani_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ashwani_Order_ToTable_1" Association="Self.FK_Ashwani_Order_ToTable_1">
+            <End Role="Ashwani_Items" EntitySet="Ashwani_Items" />
+            <End Role="Ashwani_Order" EntitySet="Ashwani_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ashwani_Order_ToTable_2" Association="Self.FK_Ashwani_Order_ToTable_2">
+            <End Role="Ashwani" EntitySet="Ashwani" />
+            <End Role="Ashwani_Order" EntitySet="Ashwani_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEMS_CATEGORY" Association="Self.FK_ITEMS_CATEGORY">
+            <End Role="Ashwani_Category" EntitySet="Ashwani_Category" />
+            <End Role="Ashwani_Items" EntitySet="Ashwani_Items" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="C3IT_DOTNET_TESTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Ashwani">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="lname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="attname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="dob" Type="DateTime" Precision="0" />
+          <Property Name="gender" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tel" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="user_level" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="udate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Ashwani_Order" Relationship="Self.FK_Ashwani_Order_ToTable_2" FromRole="Ashwani" ToRole="Ashwani_Order" />
+        </EntityType>
+        <EntityType Name="Ashwani_Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cat_name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="cat_comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cat_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Ashwani_Items" Relationship="Self.FK_ITEMS_CATEGORY" FromRole="Ashwani_Category" ToRole="Ashwani_Items" />
+        </EntityType>
+        <EntityType Name="Ashwani_Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cus_id" Type="Int32" />
+          <Property Name="Fname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Lname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tel" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Cdate" Type="DateTime" Precision="0" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ashwani_Order" Relationship="Self.FK_Ashwani_Order_ToTable" FromRole="Ashwani_Customer" ToRole="Ashwani_Order" />
+        </EntityType>
+        <EntityType Name="Ashwani_Items">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="id_item" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="itname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="qty" Type="Int32" />
+          <Property Name="sold_qty" Type="Double" />
+          <Property Name="cost" Type="Double" />
+          <Property Name="itdate" Type="DateTime" Precision="0" />
+          <Property Name="manufacturer" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="sales_per" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="itsale" Type="Double" />
+          <Property Name="cat_id" Type="Int32" />
+          <NavigationProperty Name="Ashwani_Category" Relationship="Self.FK_ITEMS_CATEGORY" FromRole="Ashwani_Items" ToRole="Ashwani_Category" />
+          <NavigationProperty Name="Ashwani_Order" Relationship="Self.FK_Ashwani_Order_ToTable_1" FromRole="Ashwani_Items" ToRole="Ashwani_Order" />
+        </EntityType>
+        <EntityType Name="Ashwani_Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ord_id" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ordname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="qty" Type="Int32" />
+          <Property Name="orddate" Type="DateTime" Precision="0" />
+          <Property Name="duedate" Type="DateTime" Precision="0" />
+          <Property Name="manufacturer" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="sales_per" Type="Int32" />
+          <Property Name="customer" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="itemid" Type="Int32" />
+          <NavigationProperty Name="Ashwani" Relationship="Self.FK_Ashwani_Order_ToTable_2" FromRole="Ashwani_Order" ToRole="Ashwani" />
+          <NavigationProperty Name="Ashwani_Customer" Relationship="Self.FK_Ashwani_Order_ToTable" FromRole="Ashwani_Order" ToRole="Ashwani_Customer" />
+          <NavigationProperty Name="Ashwani_Items" Relationship="Self.FK_Ashwani_Order_ToTable_1" FromRole="Ashwani_Order" ToRole="Ashwani_Items" />
+        </EntityType>
+        <Association Name="FK_Ashwani_Order_ToTable_2">
+          <End Role="Ashwani" Type="Self.Ashwani" Multiplicity="0..1" />
+          <End Role="Ashwani_Order" Type="Self.Ashwani_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ashwani">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ashwani_Order">
+              <PropertyRef Name="sales_per" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEMS_CATEGORY">
+          <End Role="Ashwani_Category" Type="Self.Ashwani_Category" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ashwani_Items" Type="Self.Ashwani_Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ashwani_Category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ashwani_Items">
+              <PropertyRef Name="cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ashwani_Order_ToTable">
+          <End Role="Ashwani_Customer" Type="Self.Ashwani_Customer" Multiplicity="0..1" />
+          <End Role="Ashwani_Order" Type="Self.Ashwani_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ashwani_Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ashwani_Order">
+              <PropertyRef Name="customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ashwani_Order_ToTable_1">
+          <End Role="Ashwani_Items" Type="Self.Ashwani_Items" Multiplicity="0..1" />
+          <End Role="Ashwani_Order" Type="Self.Ashwani_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ashwani_Items">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ashwani_Order">
+              <PropertyRef Name="itemid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="C3IT_DOTNET_TESTEntities13" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ashwanis" EntityType="Self.Ashwani" />
+          <EntitySet Name="Ashwani_Category" EntityType="Self.Ashwani_Category" />
+          <EntitySet Name="Ashwani_Customer" EntityType="Self.Ashwani_Customer" />
+          <EntitySet Name="Ashwani_Items" EntityType="Self.Ashwani_Items" />
+          <EntitySet Name="Ashwani_Order" EntityType="Self.Ashwani_Order" />
+          <AssociationSet Name="FK_Ashwani_Order_ToTable_2" Association="Self.FK_Ashwani_Order_ToTable_2">
+            <End Role="Ashwani" EntitySet="Ashwanis" />
+            <End Role="Ashwani_Order" EntitySet="Ashwani_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEMS_CATEGORY" Association="Self.FK_ITEMS_CATEGORY">
+            <End Role="Ashwani_Category" EntitySet="Ashwani_Category" />
+            <End Role="Ashwani_Items" EntitySet="Ashwani_Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ashwani_Order_ToTable" Association="Self.FK_Ashwani_Order_ToTable">
+            <End Role="Ashwani_Customer" EntitySet="Ashwani_Customer" />
+            <End Role="Ashwani_Order" EntitySet="Ashwani_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ashwani_Order_ToTable_1" Association="Self.FK_Ashwani_Order_ToTable_1">
+            <End Role="Ashwani_Items" EntitySet="Ashwani_Items" />
+            <End Role="Ashwani_Order" EntitySet="Ashwani_Order" />
+          </AssociationSet>
+          <EntitySet Name="Ashwani_EMployee" EntityType="C3IT_DOTNET_TESTModel.Ashwani_EMployee" />
+        </EntityContainer>
+        <EntityType Name="Ashwani_EMployee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpAge" Type="Int32" />
+          <Property Name="EmpSalary" Type="Double" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="C3IT_DOTNET_TESTModelStoreContainer" CdmEntityContainer="C3IT_DOTNET_TESTEntities13">
+          <EntitySetMapping Name="Ashwanis">
+            <EntityTypeMapping TypeName="C3IT_DOTNET_TESTModel.Ashwani">
+              <MappingFragment StoreEntitySet="Ashwani">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="attname" ColumnName="attname" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="user_level" ColumnName="user_level" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="udate" ColumnName="udate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ashwani_Category">
+            <EntityTypeMapping TypeName="C3IT_DOTNET_TESTModel.Ashwani_Category">
+              <MappingFragment StoreEntitySet="Ashwani_Category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cat_name" ColumnName="cat_name" />
+                <ScalarProperty Name="cat_comment" ColumnName="cat_comment" />
+                <ScalarProperty Name="cat_date" ColumnName="cat_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ashwani_Customer">
+            <EntityTypeMapping TypeName="C3IT_DOTNET_TESTModel.Ashwani_Customer">
+              <MappingFragment StoreEntitySet="Ashwani_Customer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Cus_id" ColumnName="Cus_id" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Cdate" ColumnName="Cdate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ashwani_Items">
+            <EntityTypeMapping TypeName="C3IT_DOTNET_TESTModel.Ashwani_Items">
+              <MappingFragment StoreEntitySet="Ashwani_Items">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="id_item" ColumnName="id_item" />
+                <ScalarProperty Name="itname" ColumnName="itname" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="sold_qty" ColumnName="sold_qty" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="itdate" ColumnName="itdate" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+                <ScalarProperty Name="sales_per" ColumnName="sales_per" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="itsale" ColumnName="itsale" />
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ashwani_Order">
+            <EntityTypeMapping TypeName="C3IT_DOTNET_TESTModel.Ashwani_Order">
+              <MappingFragment StoreEntitySet="Ashwani_Order">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ord_id" ColumnName="ord_id" />
+                <ScalarProperty Name="ordname" ColumnName="ordname" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="orddate" ColumnName="orddate" />
+                <ScalarProperty Name="duedate" ColumnName="duedate" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+                <ScalarProperty Name="sales_per" ColumnName="sales_per" />
+                <ScalarProperty Name="customer" ColumnName="customer" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="itemid" ColumnName="itemid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ashwani_EMployee">
+            <EntityTypeMapping TypeName="C3IT_DOTNET_TESTModel.Ashwani_EMployee">
+              <MappingFragment StoreEntitySet="Ashwani_EMployee">
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="EmpSalary" ColumnName="EmpSalary" />
+                <ScalarProperty Name="EmpAge" ColumnName="EmpAge" />
+                <ScalarProperty Name="EmpAddress" ColumnName="EmpAddress" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
